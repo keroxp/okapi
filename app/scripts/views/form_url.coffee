@@ -4,7 +4,7 @@ class okapi.Views.FormUrlView extends Backbone.View
   el: $ "#form-url"
   events:
     "change select" : "onChangeSelect"
-    "click #send-button" : "onClickSendButton"
+    "click #form-send-button" : "onClickSendButton"
   initialize: (d) ->
     unless app.API
       app.trigger "error", "app doesn't have API"
@@ -25,6 +25,7 @@ class okapi.Views.FormUrlView extends Backbone.View
       that.addOptions that.$path, [k], true
       names = _.pluck v, "path"
       that.addOptions that.$path, names, false
+    this.listenTo app.API, "change:routes", this.onChangeRoute
   addOptions: ($to,opts,disabled) ->
     _.each opts, (v,i,l) ->
       $opt = $ "<option></option>"

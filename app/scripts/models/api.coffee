@@ -73,8 +73,8 @@ class app.Models.API extends Backbone.Model
   getURL : () ->
     scheme = this.get "scheme"
     host = this.get "host"
-    reoute = this.get "route"
-    port = this.gte "port"
+    route = this.get "route"
+    port = this.get "port"
     "#{scheme}://#{host}:#{port}#{route}"
   send : () ->
     # urlを構築
@@ -86,13 +86,12 @@ class app.Models.API extends Backbone.Model
     $.each ids, (i,v) ->
       url = url.replace(":id",v.get("value"))
     params = _.reduce app.API.params.models, (memo,v) ->
-      memo[v.get("key")] = encodeURI m.get("value")
+      memo[v.get("key")] = encodeURI v.get("value")
     , {}
-    method = $(this.$selects[0]).val();
+    method = this.get "method"
     console.log method + "  " + url
     console.log params
     that = this
-    this.$sendButton.attr("disabled","disabled")
     $.ajax
       url : url + ".json"
       data : params

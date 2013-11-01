@@ -37,7 +37,7 @@ class okapi.Views.FormRequestInfoView extends Backbone.View
       model : model
     }
     # id系でなければ
-    if model.get("key").indexOf(":id") < 0
+    unless model.get("key").match(":")
       # データ欄に追加
       this.$data.append newSpan.render().el
   onRemoveParameter: (model) ->

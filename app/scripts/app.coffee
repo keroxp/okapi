@@ -22,10 +22,6 @@ window.okapi = window.app =
     console.log 'Hello from Backbone!'
     # jsonからAPIをイニシャライズ
     this.API = new this.Models.API json
-    # カスタムパラメータのコレクション
-    # this.ParametersCollection = new this.Collections.ParametersCollection
-    # Views
-    # this.FormView = new this.Views.FormView
     this.RequestInfoView = new this.Views.FormRequestInfoView
     this.UrlView = new this.Views.FormUrlView
     this.ParametersView = new this.Views.FormParametersView

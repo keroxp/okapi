@@ -7,6 +7,8 @@ class app.Views.ParameterSpanView extends Backbone.View
   events:
     "keyup .parameter-value" : "onKeyUp"
   onKeyUp : (e)->
+    e.preventDefault()
+    e.stopPropagation()
     # モデルを変更
     newval = $(e.target).text()
     console.log newval

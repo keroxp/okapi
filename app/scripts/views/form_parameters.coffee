@@ -12,6 +12,7 @@ class okapi.Views.FormParametersView extends Backbone.View
     this.$newParameterButton = this.$el.find("#add-parameter-button")
     # observer addition of params
     this.listenTo app.API.params, "add", this.onAddParameter
+    this.listenTo app.API, "change:route", this.onChangeRoute
   onClickAddParameterButton: (e) ->
     key = this.$newParameterInput.val()
     if app.API.params.where({key : key}).length is 0
@@ -43,3 +44,7 @@ class okapi.Views.FormParametersView extends Backbone.View
     this.$parametersTable.append(newRow.render().el)
     # フォーカスを当てる
     newRow.$input().focus()
+  onChangeRoute: (model,newroute) ->
+    if newroute.params
+      app.API.params.add _.map newroute.params, (v) ->
+        return new app.Modesl.ParameterModel v

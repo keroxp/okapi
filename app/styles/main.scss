@@ -70,18 +70,14 @@ body {
     }
 }
 
-.parameter-span {
-    .parameter-value {
-        color : #3276b1
-    }
-}
-
 #form-request-url, #form-request-data {
-   font-size: 20px;
-   span {
-    margin:0;
-    padding:0;
-   }
+    @include clearfix;
+    font-size:20px;
+    .parameter-span {
+        .parameter-value {
+            color : #3276b1;
+        }
+    }
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

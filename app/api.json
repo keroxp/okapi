@@ -103,7 +103,7 @@
         ]
       },
       {
-        "path" : "/usrs/:id/bookmark/:bookmark_id",
+        "path" : "/users/:id/bookmark/:bookmark_id",
         "method" : "GET"
       }
     ]
