@@ -1,0 +1,25 @@
+<div class="form-group">
+  <label for="custom-parameter-<%= key %>" class="control-label col-md-4">
+    <%= key %>
+    <% if (required) { %>
+    <span class="label label-danger">必須</span>
+    <% } %>
+    <% if (common) { %>
+    <span class="label label-success">共通</span>
+    <% } %>    
+  </label>
+  <div class="col-md-8">
+  <% if ((!common && !required) || key === "auth_token") { %>
+    <div class="input-group">
+  <% } %>
+      <input id="custom-parameter-<%= key %>" type="text" class="form-control">
+      <div class="input-group-btn">      
+  <% if (!common && !required) { %>
+        <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+  <% } else if (key === "auth_token") {  %>
+        <button type="button" id="get-auth-token" data-toggle="modal" href="#auth-token-modal" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></button>
+  <% }  %>
+        </div>
+    </div>
+  </div>
+</div>

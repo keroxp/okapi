@@ -1,0 +1,48 @@
+extends layout
+block append header
+  button.pull-right.btn.btn-default(style="display:inline;",type="button",onClick="app.trigger(\"toggleDebug\")")
+    span.glyphicon.glyphicon-th-list
+block content
+  #debug-window.side(style="display:none")
+    a.close() &times;
+    textarea
+  #form.form-horizontal(role="form")
+    #form-url.form-group.col-md-12
+      .col-md-2
+        select#form-http-method.form-control
+      .col-md-2
+        select#form-http-scheme.form-control
+      .col-md-2
+        select#form-host.form-control
+      .col-md-1
+        select#form-port.form-control
+      .col-md-4
+        select#form-api-path.form-control
+          option(value="", selected) APIのパスを選択
+      .col-md-1
+        button#form-send-button.btn.btn-primary.pull-right(type="button",data-loading-text="通信中")
+          | 送信
+    hr
+    #form-request-info.col-md-12
+      .form-group
+        label.col-md-2
+          | リクエストURL
+        .col-md-10#form-request-url
+          span#form-request-url-scheme(data-bind,data-bind-target="app.API",data-bind-attr="scheme")
+          span#form-request-url-host(data-bind,data-bind-target="app.API",data-bind-attr="host")
+          span#form-request-url-port(data-bind,data-bind-target="app.API",data-bind-attr="port")
+          span#form-request-url-route
+      .form-group
+        label.col-md-2
+          | データ
+        .col-md-10#form-request-data
+    hr
+    #form-parameters.col-md-5
+      #form-parameters-custom
+      #form-parameters-add.input-group
+        input#form-new-parameter.form-control(type="text",placeHolder="カスタムパラメータ名を入力")
+        .input-group-btn
+          button#add-parameter-button.btn.btn-primary(type="button",disabled="disabled")
+            span.glyphicon.glyphicon-plus
+    #form-content.col-md-7
+      textarea#form-response.form-control

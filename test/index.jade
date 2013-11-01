@@ -1,0 +1,22 @@
+extends ../app/jade/index
+block append head
+  link(rel="stylesheet",href="lib/mocha/mocha.css")
+block prepend body
+  #mocha
+block append body
+  script(src='lib/mocha/mocha.js')
+  script
+    mocha.setup('bdd')
+  // assertion framework
+  script(src='lib/chai.js')
+  script
+    var expect = chai.expect;
+    should = chai.should();
+  // include source files here...
+  // include spec files here...
+  script(src='spec/app_spec.js')
+  script
+    $(function(){
+      $(".container").hide()
+      mocha.run()
+    });

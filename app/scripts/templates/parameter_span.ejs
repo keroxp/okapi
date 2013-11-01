@@ -1,0 +1,5 @@
+<% if (url_component) { %>
+<span class="parameter-value" contenteditable="true"><%=value%></span>
+<% }else{ %>
+<span class="parameter-key"><%=key%></span>=<span class="parameter-value" contenteditable="true"><%=value%></span>&
+<% } %>
